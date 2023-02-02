@@ -1,9 +1,5 @@
 import { ApiService } from './services/api.service';
-import { Coordinate } from './interface/coordinate';
-import { Component, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of } from 'rxjs';
-import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -59,7 +55,7 @@ export class AppComponent {
           lat: point.lat,
           lng: point.lng
         }
-        
+
         this.apiService.getRandomGoal(point).subscribe((coordinate) => {
           this.goalLocation = {
             lat: coordinate.lat,
