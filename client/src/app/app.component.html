@@ -1,0 +1,14 @@
+<div class="google_map_container">
+  <google-map [zoom]="mapZoom" [center]="myLocation">
+    <map-marker
+      #marker="mapMarker"
+      [position]="myLocation"
+      [options]="myMarkerOptions">
+    </map-marker>
+    <map-marker
+      #marker="mapMarker"
+      [position]="goalLocation"
+      [options]="goalMarkerOptions">
+    </map-marker>
+  </google-map>
+</div>
