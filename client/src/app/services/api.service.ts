@@ -1,6 +1,6 @@
 import { RequestCheckGoal } from './../interface/request-check-goal';
 import { RequestGoal } from '../interface/request-goal';
-import { Coordinate } from './../interface/coordinate';
+import { Coordinate } from './../../../../sharedInterface/coordinate';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,7 +12,7 @@ export class ApiService {
   baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
 
-  getRandomGoal(myLocataion: google.maps.LatLngLiteral) {
+  getRandomGoal(myLocataion: Coordinate) {
     let body: RequestGoal = {
       coordinate: myLocataion,
       radius: 1000,
@@ -21,10 +21,7 @@ export class ApiService {
     return this.http.post<Coordinate>(`${this.baseUrl}/getRandomCoor`, body);
   }
 
-  checkIfGoal(
-    myLocataion: google.maps.LatLngLiteral,
-    goalLocation: google.maps.LatLngLiteral
-  ) {
+  checkIfGoal(myLocataion: Coordinate, goalLocation: Coordinate) {
     let body: RequestCheckGoal = {
       spotCoor: myLocataion,
       center: goalLocation,

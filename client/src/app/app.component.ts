@@ -56,10 +56,10 @@ export class AppComponent {
           lng: point.lng
         }
 
-        this.apiService.getRandomGoal(point).subscribe((coordinate) => {
+        this.apiService.getRandomGoal({lat: this.myLocation.lat, long: this.myLocation.lng}).subscribe((coordinate) => {
           this.goalLocation = {
             lat: coordinate.lat,
-            lng: coordinate.lng,
+            lng: coordinate.long,
           };
         });
       }
@@ -74,11 +74,16 @@ export class AppComponent {
           lng: position.coords.longitude,
         };
 
-        this.apiService.checkIfGoal(this.myLocation, this.goalLocation).subscribe(isGoal => {
-          if (isGoal) {
-            alert("GOAL!!!!!!!!!!!")
-          }
-        })
+        this.apiService
+          .checkIfGoal(
+            { lat: this.myLocation.lat, long: this.myLocation.lng },
+            { lat: this.goalLocation.lat, long: this.goalLocation.lng }
+          )
+          .subscribe((isGoal) => {
+            if (isGoal) {
+              alert('GOAL!!!!!!!!!!!');
+            }
+          });
       },
       (error) => {
         if (error.PERMISSION_DENIED) {

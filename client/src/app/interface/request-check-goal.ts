@@ -1,5 +1,7 @@
+import { Coordinate } from "../../../../sharedInterface/coordinate";
+
 export interface RequestCheckGoal {
-  spotCoor: google.maps.LatLngLiteral,
-  center: google.maps.LatLngLiteral,
+  spotCoor: Coordinate;
+  center: Coordinate;
   radius: number;
 }

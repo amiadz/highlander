@@ -1,4 +1,6 @@
+import { Coordinate } from "../../../../sharedInterface/coordinate";
+
 export interface RequestGoal {
-  coordinate: google.maps.LatLngLiteral;
+  coordinate: Coordinate;
   radius: number;
 }

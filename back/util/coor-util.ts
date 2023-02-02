@@ -1,4 +1,4 @@
-import { Coordinate } from './../model/coordinate';
+import { Coordinate } from 'sharedInterface/coordinate';
 
 var getRandomLocation = function (latitude: number, longitude: number, radiusInMeters: number) {
   var getRandomCoordinates = function (radius: number, uniform: boolean) {
@@ -39,7 +39,7 @@ var getRandomLocation = function (latitude: number, longitude: number, radiusInM
   // Offset position in decimal degrees.
   let coor: Coordinate = {
     lat: latitude + offsetLatitude * (180 / Math.PI),
-    lng: longitude + offsetLongitude * (180 / Math.PI)
+    long: longitude + offsetLongitude * (180 / Math.PI)
   }
   return coor
 };
@@ -47,9 +47,9 @@ var getRandomLocation = function (latitude: number, longitude: number, radiusInM
 function checkIfInside(spotCoordinates: Coordinate, center: Coordinate, radius: number) {
   let newRadius = distanceInKmBetweenEarthCoordinates(
     spotCoordinates.lat,
-    spotCoordinates.lng,
+    spotCoordinates.long,
     center.lat,
-    center.lng
+    center.long
   );
 
   // COnvert radius to KM
