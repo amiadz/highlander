@@ -9,5 +9,5 @@ COPY package*.json ./
 RUN npm install
 
 COPY ./dist .
-
+ENV PORT 3000
 CMD [ "node", "index.js" ]
